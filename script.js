@@ -54,3 +54,19 @@ if (menuNavegacao && window.bootstrap) {
     });
   });
 }
+
+
+// Sincroniza o estado acessível do botão do menu mobile.
+const botaoMenuMobile = document.querySelector(
+  '[data-bs-target="#menuNavegacao"]'
+);
+
+if (menuNavegacao && botaoMenuMobile) {
+  menuNavegacao.addEventListener("show.bs.offcanvas", () => {
+    botaoMenuMobile.setAttribute("aria-expanded", "true");
+  });
+
+  menuNavegacao.addEventListener("hidden.bs.offcanvas", () => {
+    botaoMenuMobile.setAttribute("aria-expanded", "false");
+  });
+}
