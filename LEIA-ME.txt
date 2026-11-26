@@ -1,0 +1,27 @@
+PORTFÓLIO C●FFEE — VITOR HUGO
+
+IDENTIDADE VISUAL
+- Logo principal: assets/logo-cffee-vitor-hugo.png
+- Símbolo reduzido (marca e favicon): assets/logo-simbolo.png
+- Paleta original preservada: fundo grafite/preto, violeta, vermelho e branco.
+- Estética original preservada: futurista minimalista, com detalhes neon discretos.
+
+ARQUIVOS
+- index.html: estrutura do portfólio.
+- style.css: identidade visual, componentes e responsividade (CSS original).
+- script.js: interações, animações de entrada e ano automático.
+- assets/: logotipos atualizados C●FFEE — Vitor Hugo.
+
+PERSONALIZAÇÃO PENDENTE
+1. Revise o texto de apresentação e a seção “Sobre mim”.
+2. Nos cards de projetos, substitua títulos, descrições e tecnologias pelos seus projetos reais.
+3. Troque os links de exemplo pelos links do GitHub e das demonstrações.
+4. Substitua seuemail@exemplo.com pelo seu e-mail profissional.
+5. Se desejar, adicione seu currículo em PDF e crie um link para ele.
+
+DEPENDÊNCIAS
+- Bootstrap 5.3.8 via CDN (menu mobile).
+- Google Fonts via CDN (Inter, DM Mono e Orbitron).
+
+Abra index.html no navegador para visualizar. É necessária conexão com a internet
+para carregar Bootstrap e as fontes externas.
