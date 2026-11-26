@@ -561,11 +561,12 @@ a { color: inherit; }
   }
 }
 
-/* Mobile e tablet: esconde os links até tocar no hambúrguer. */
+/* Mobile/tablet: mantém a barra original e abre apenas o painel lateral ao tocar. */
 @media (max-width: 991.98px) {
   .site-header .navbar {
     min-height: 68px;
     flex-wrap: nowrap;
+    align-items: center;
     gap: 12px;
   }
 
@@ -590,11 +591,6 @@ a { color: inherit; }
     box-shadow: 0 0 12px rgba(139, 92, 246, .12) !important;
   }
 
-  .site-header .navbar-toggler:focus-visible {
-    outline: 2px solid var(--purple-bright);
-    outline-offset: 3px;
-  }
-
   .site-header .navbar-toggler-icon {
     background-image: var(--bs-navbar-toggler-icon-bg);
   }
@@ -607,9 +603,19 @@ a { color: inherit; }
     top: 0;
     right: 0;
     bottom: 0;
+    left: auto;
     width: min(360px, 88vw);
+    height: 100vh;
+    height: 100dvh;
+    max-height: 100dvh;
+    visibility: hidden;
     border-left: 1px solid var(--border-strong);
     background: #100e1a;
+    overflow-y: auto;
+  }
+
+  .site-menu.offcanvas.show {
+    visibility: visible;
   }
 
   .site-menu .offcanvas-header {
@@ -619,16 +625,21 @@ a { color: inherit; }
   }
 
   .site-menu .offcanvas-body {
+    display: block;
     padding: 18px 22px 26px;
+    overflow-y: auto;
   }
 
   .site-menu .navbar-nav {
+    display: flex;
+    flex-direction: column;
     align-items: stretch !important;
     gap: 8px;
     padding-top: 4px;
   }
 
   .site-menu .nav-item {
+    display: block;
     width: 100%;
     margin: 0 !important;
   }
@@ -644,6 +655,10 @@ a { color: inherit; }
   .site-menu .button {
     justify-content: center;
     margin-top: 8px;
+  }
+
+  .offcanvas-backdrop.show {
+    z-index: 1050;
   }
 }
 

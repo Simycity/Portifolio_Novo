@@ -5,7 +5,10 @@
 // Brilho discreto que acompanha o cursor em dispositivos com mouse.
 const cursorGlow = document.querySelector(".cursor-glow");
 
-if (cursorGlow && window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+if (
+  cursorGlow &&
+  window.matchMedia("(hover: hover) and (pointer: fine)").matches
+) {
   document.addEventListener("pointermove", (event) => {
     cursorGlow.style.left = `${event.clientX}px`;
     cursorGlow.style.top = `${event.clientY}px`;
@@ -22,7 +25,7 @@ if (anoAtual) {
 // Revela elementos conforme entram na área visível da tela.
 const elementosReveal = document.querySelectorAll(".reveal");
 const prefereMovimentoReduzido = window.matchMedia(
-  "(prefers-reduced-motion: reduce)"
+  "(prefers-reduced-motion: reduce)",
 ).matches;
 
 if ("IntersectionObserver" in window && !prefereMovimentoReduzido) {
@@ -35,7 +38,7 @@ if ("IntersectionObserver" in window && !prefereMovimentoReduzido) {
         }
       });
     },
-    { threshold: 0.12 }
+    { threshold: 0.12 },
   );
 
   elementosReveal.forEach((elemento) => observador.observe(elemento));
@@ -55,10 +58,42 @@ if (menuNavegacao && window.bootstrap) {
   });
 }
 
+// Atualiza o item ativo da navegação conforme a seção visível.
+const secoes = document.querySelectorAll("main section[id]");
+const linksNavegacao = document.querySelectorAll(
+  '.site-menu .nav-link[href^="#"]',
+);
+
+function atualizarNavegacao() {
+  let secaoAtual = "inicio";
+
+  secoes.forEach((secao) => {
+    const posicao = secao.getBoundingClientRect();
+
+    if (posicao.top <= 150) {
+      secaoAtual = secao.id;
+    }
+  });
+
+  linksNavegacao.forEach((link) => {
+    const ativo = link.getAttribute("href") === `#${secaoAtual}`;
+
+    link.classList.toggle("active", ativo);
+
+    if (ativo) {
+      link.setAttribute("aria-current", "location");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+}
+
+window.addEventListener("scroll", atualizarNavegacao);
+window.addEventListener("load", atualizarNavegacao);
 
 // Sincroniza o estado acessível do botão do menu mobile.
 const botaoMenuMobile = document.querySelector(
-  '[data-bs-target="#menuNavegacao"]'
+  '[data-bs-target="#menuNavegacao"]',
 );
 
 if (menuNavegacao && botaoMenuMobile) {
